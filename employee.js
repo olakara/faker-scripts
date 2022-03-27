@@ -72,15 +72,16 @@ const orgTree = {
 function getDepartmentPathString(orgTree) {
   let departments = orgTree.departments;  
   console.log(departments);
+  if(!departments)
+    return;
   if(departments && departments.length){
     let unit = faker.random.arrayElement(departments);
     let result = getDepartmentPathString(unit);
-    return result + ' - ' + unit.code;
+    if(result)
+      return result + ' - ' +unit.code;
+    else
+      return unit.code;
   } 
-  // else {
-  //   console.log('last', orgTree.code)
-  //   return orgTree.code;
-  // }  
 }
 
 function getDepartmentSection() {
