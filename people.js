@@ -70,19 +70,30 @@ function getEmployeeId() {
     return type + faker.finance.account(5);
 }
 
-function getPerson() {
+function getMobile() {
+  return faker.phone.phoneNumber('+971-5#-#######');
+}
+
+function getPerson(gender, type, lastName) {
+
+  if(!gender) 
+    gender = getGender();
+
+  if(!type)
+    type = faker.random.arrayElement(['baby', 'child', 'young','worker','old']);
 
   let person = {
     id: faker.datatype.uuid(),  
-    gender: getGender()
+    gender: gender
   };
-  let type = faker.random.arrayElement(['baby', 'child', 'young','worker','old'])
+  
   let name = getName(person.gender);
   let dob = getBirthDate(type);
   let ssn = getSSN(dob);
+
   person = { ...person,
       firstName: name.firstName,
-      lastName: name.lastName,
+      lastName: lastName ? lastName : name.lastName,
       middleName: name.middleName,
       dob,
       ssn
@@ -95,20 +106,33 @@ function getEmployee() {
 
   let person = getPerson();
   person.dob = getBirthDate('worker');
-  person.eid = getEmployeeId()
+  person.eid = getEmployeeId();
+  person.mobile = getMobile();
 
   return person;
 }
 
 function getFamily() {
 
+  let kidsCount = faker.datatype.number({ min: 0, max: 6 });
+  let kids = [];
+  const father = getPerson('male','worker');
+  const mother = getPerson('female','worker');
+  let lastName = father.lastName;
+  for(let i = 0;i< kidsCount;i++) {
+    let type = faker.random.arrayElement(['baby', 'child', 'young']);
+    kids.push(getPerson(undefined, type, lastName));
+  }
   
+  return [father, mother, ...kids];
+
 }
 
 
 
 export {
    getPerson,
-   getEmployee
+   getEmployee,
+   getFamily
 }
 
