@@ -64,16 +64,6 @@ function getSSN(dob) {
     );
   }
 
-
-function getEmployeeId() {
-    const type = faker.random.arrayElement(['C', 'P', 'T']);
-    return type + faker.finance.account(5);
-}
-
-function getMobile() {
-  return faker.phone.phoneNumber('+971-5#-#######');
-}
-
 function getPerson(gender, type, lastName) {
 
   if(!gender) 
@@ -102,15 +92,6 @@ function getPerson(gender, type, lastName) {
   return person;
 }
 
-function getEmployee() {
-
-  let person = getPerson();
-  person.dob = getBirthDate('worker');
-  person.eid = getEmployeeId();
-  person.mobile = getMobile();
-
-  return person;
-}
 
 function getFamily() {
 
@@ -128,11 +109,8 @@ function getFamily() {
 
 }
 
-
-
 export {
-   getPerson,
-   getEmployee,
+   getPerson,   
    getFamily
 }
 
