@@ -11,7 +11,6 @@ console.log(getEmployee());
 
 
 
-
 // create people
 // console.log('Creating people...');
 // let result = [];
@@ -27,15 +26,15 @@ console.log(getEmployee());
 // console.log('done!')
 
 //create employee
-console.log('Creating Employee...');
-let result = [];
-for (let i = 0; i < 500; i++) {
-    result.push(getEmployee());
-}
-try {
-    console.log('Writing file..');
-    fs.writeFileSync('./employees.json', JSON.stringify(result));
-  } catch (err) {
-    console.error(err);
-  }
-console.log('done!')
+// console.log('Creating Employee...');
+// let result = [];
+// for (let i = 0; i < 500; i++) {
+//     result.push(getEmployee());
+// }
+// try {
+//     console.log('Writing file..');
+//     fs.writeFileSync('./employees.json', JSON.stringify(result));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// console.log('done!')
