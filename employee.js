@@ -71,7 +71,6 @@ const orgTree = {
 
 function getDepartmentPathString(orgTree) {
   let departments = orgTree.departments;  
-  console.log(departments);
   if(!departments)
     return;
   if(departments && departments.length){
@@ -88,19 +87,6 @@ function getDepartmentSection() {
   return faker.name.jobArea();
 }
 
-function getManufacturingSection() {
-  
-  let assembly = faker.random.arrayElement(['AS1','AS2','AS4','AS5','AS6']);
-  let module = faker.random.arrayElement(['Office','Platform','Site'])
-  let unit = faker.random.arrayElement(['U1','U2','U3','U4','U5','U6','U7','U8']);
-
-  if(module == 'Office')
-  return assembly + ' - Office ';
-  else if(module == 'Platform')
-    return assembly + ' - DC - ' + unit;
-  else
-    return assembly + ' - ' + unit;
-}
 function getJoiningDate(dob) {
 
   let birthYear = dob.getFullYear();
@@ -121,8 +107,7 @@ function getEmployee() {
     person.mobile = getMobile();
     person.department = getDepartmentPathString(orgTree);
     person.joinDate = getJoiningDate(person.dob);
-    person.jobType = faker.name.jobType();
-    person.section = person.department != 'Manufacturing' ? getDepartmentSection() : getManufacturingSection();
+    person.jobType = faker.name.jobType();    
     return person;
   }
 
