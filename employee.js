@@ -65,7 +65,7 @@ const orgTree = {
                   ]}
               ]}
           ]
-      }
+      }      
   ]
 }
 
@@ -107,7 +107,8 @@ function getEmployee() {
     person.mobile = getMobile();
     person.department = getDepartmentPathString(orgTree);
     person.joinDate = getJoiningDate(person.dob);
-    person.jobType = faker.name.jobType();    
+    person.jobType = faker.name.jobType();
+    person.avatar = faker.image.avatar();
     return person;
   }
 
